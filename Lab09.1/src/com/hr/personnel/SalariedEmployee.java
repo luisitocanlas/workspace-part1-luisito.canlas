@@ -26,8 +26,14 @@ public class SalariedEmployee extends Employee {
         System.out.println(getName() + " is paid salary " + getSalary());
     }
 
+
     public void takeVacation() {
         System.out.println(getName() + " is on vacation.");
+    }
+
+    @Override  // interface TaxPayer
+    public void payTaxes(){
+        System.out.println(getName() + " paid taxes of " + (getSalary() * SALARIED_TAX_RATE));
     }
 
     // accessors

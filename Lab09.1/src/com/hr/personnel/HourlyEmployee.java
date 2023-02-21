@@ -28,6 +28,11 @@ public class HourlyEmployee extends Employee {
         System.out.println(getName() + " is paid hourly with a total of " + (getRate() * getHours()));
     }
 
+    @Override  // interface TaxPayer
+    public void payTaxes(){
+        System.out.println(getName() + " paid taxes of " + (getRate() * getHours() * HOURLY_TAX_RATE));
+    }
+
     // accessors
     public double getRate() {
         return rate;

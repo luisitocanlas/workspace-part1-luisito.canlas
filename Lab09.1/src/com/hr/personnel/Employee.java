@@ -8,6 +8,8 @@
 
 package com.hr.personnel;
 
+import gov.irs.TaxPayer;
+
 import java.time.LocalDate;
 
 /**
@@ -21,7 +23,7 @@ import java.time.LocalDate;
  *   void work()        simulates work by printing a message to show it was called.
  *   String toString()  self-explanatory.
  */
-public abstract class Employee {
+public abstract class Employee implements TaxPayer {
     // fields
     private String name;
     private LocalDate hireDate;
