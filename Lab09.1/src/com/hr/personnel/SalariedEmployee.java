@@ -3,6 +3,8 @@ package com.hr.personnel;
 import java.time.LocalDate;
 
 public class SalariedEmployee extends Employee {
+    public static final double STANDARD_DEDUCTION = 10_000.00;
+
     // fields
     private double salary;
 
@@ -38,6 +40,11 @@ public class SalariedEmployee extends Employee {
     @Override   // interface Taxpayer
     public void fileReturn() {
         System.out.println("Return filed electronically");
+    }
+
+    @Override
+    public double getStandardDeduction() {
+        return STANDARD_DEDUCTION;
     }
 
     // accessors methods
