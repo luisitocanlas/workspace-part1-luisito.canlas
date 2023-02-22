@@ -22,7 +22,7 @@ public class HourlyEmployee extends Employee {
         setHours(hours);        // handle this myself
     }
 
-    // methods
+    // business methods
     @Override
     public void pay() {
         System.out.println(getName() + " is paid hourly with a total of " + (getRate() * getHours()));
@@ -33,7 +33,7 @@ public class HourlyEmployee extends Employee {
         System.out.println(getName() + " paid taxes of " + (getRate() * getHours() * HOURLY_TAX_RATE));
     }
 
-    // accessors
+    // accessors methods
     public double getRate() {
         return rate;
     }

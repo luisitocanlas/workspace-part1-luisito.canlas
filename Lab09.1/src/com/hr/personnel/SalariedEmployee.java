@@ -20,23 +20,27 @@ public class SalariedEmployee extends Employee {
         setSalary(salary);      // handle this myself
     }
 
-    // methods
+    // business methods
     @Override
     public void pay() {
         System.out.println(getName() + " is paid salary " + getSalary());
     }
 
-
     public void takeVacation() {
         System.out.println(getName() + " is on vacation.");
     }
 
-    @Override  // interface TaxPayer
+    @Override   // interface TaxPayer
     public void payTaxes(){
         System.out.println(getName() + " paid taxes of " + (getSalary() * SALARIED_TAX_RATE));
     }
 
-    // accessors
+    @Override   // interface Taxpayer
+    public void fileReturn() {
+        System.out.println("Return filed electronically");
+    }
+
+    // accessors methods
     public double getSalary() {
         return salary;
     }
