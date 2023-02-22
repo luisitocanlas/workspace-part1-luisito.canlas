@@ -11,6 +11,9 @@ package com.hr.personnel;
 import java.time.LocalDate;
 
 public class HourlyEmployee extends Employee {
+    // class constants
+    public static final double FEDERAL_MINIMUM_WAGE = 15.0;
+
     // fields
     private double rate;
     private double hours;
@@ -23,7 +26,7 @@ public class HourlyEmployee extends Employee {
         super(name, hireDate);  // delegate to superclass ctor for name, hireDate
     }
 
-    public HourlyEmployee(String name, LocalDate hireDate, double rate, double hours) {
+    public HourlyEmployee(String name, LocalDate hireDate, double rate, double hours) throws IllegalArgumentException{
         this(name, hireDate);   // delegate to neighboring ctor for name, hireDate
         setRate(rate);          // handle rate here, by delegating to setter
         setHours(hours);        // handle hours here, by delegating to setter
@@ -46,8 +49,14 @@ public class HourlyEmployee extends Employee {
         return rate;
     }
 
-    public void setRate(double rate) {
-        this.rate = rate;
+    public void setRate(double rate) throws IllegalArgumentException {
+        if (rate >= FEDERAL_MINIMUM_WAGE) {
+            this.rate = rate;
+        }
+        else {
+            throw new IllegalArgumentException(String.format("Illegal wage: %s. Federal minimum wage is %s.",
+                    rate, FEDERAL_MINIMUM_WAGE));
+        }
     }
 
     public double getHours() {
