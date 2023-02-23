@@ -12,6 +12,8 @@ import com.hr.personnel.Department;
 import com.hr.personnel.Employee;
 import com.hr.personnel.HourlyEmployee;
 import com.hr.personnel.SalariedEmployee;
+import gov.irs.IllegalWageException;
+
 import java.time.LocalDate;
 
 /**
@@ -26,9 +28,23 @@ class HRClient {
 
         // add Employees to it
         dept.addEmployee(new SalariedEmployee("Jason",  LocalDate.of(1990, 8, 24), 2250.0));
-        dept.addEmployee(new HourlyEmployee("Julie",    LocalDate.of(2000, 2, 2), 35.0, 30.0));
         dept.addEmployee(new SalariedEmployee("Amilia", LocalDate.of(1999, 2, 6), 1250.0));
-        dept.addEmployee(new HourlyEmployee("Logan",    LocalDate.of(2002, 6, 2), 40.0, 40.0));
+
+        try {
+            dept.addEmployee(new HourlyEmployee("Julie",    LocalDate.of(2000, 2, 2), 35.0, 30.0));
+        }
+        catch (IllegalWageException e) {
+//            e.printStackTrace();
+//            System.out.println("    ERROR: " + e);    // toString() called for concatenation
+            System.out.println(e.getMessage());         // just the "reason" string ('message')
+        }
+
+        try {
+            dept.addEmployee(new HourlyEmployee("Logan",    LocalDate.of(2002, 6, 2), 40.0, 40.0));
+        }
+        catch (IllegalWageException e) {
+            System.out.println(e.getMessage());         // just the "reason" string ('message')
+        }
 
         // list its Employees
         System.out.println("\nList employees:");
